@@ -1,0 +1,21 @@
+/* Estilo para el contenedor de los personajes */
+.container {
+    position: relative; /* Necesario para posicionar los personajes dentro del canvas */
+}
+
+/* Estilos para el personaje "crow" */
+.png-crow {
+    position: absolute;
+    top: 250px; /* Ajustar la posición vertical según sea necesario */
+    left: 350px; /* Ajustar la posición horizontal según sea necesario */
+}
+
+/* Estilos para el personaje "cataws" */
+
+.png-cataws {
+    position: absolute;
+    top: 200px; /* Ajustar la posición vertical según sea necesario */
+    left: 200px; /* Ajustar la posición horizontal según sea necesario */
+    height: 400px;
+    width: 400px;
+}

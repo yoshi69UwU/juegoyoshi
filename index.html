@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>the misery warriors</title>
+    <link rel="stylesheet" href="lienzo.css">
+    <link rel="stylesheet" href="stylesjuego.css">
+    <link rel="stylesheet" href="stylesjuego.css"> <!-- Archivo CSS para el personaje "crow" -->
+    <link rel="stylesheet" href="stylesjuego.css"> <!-- Archivo CSS para el personaje "cataws" -->
+</head>
+<body>
+    <!-- Elemento del personaje "cataws" con ID -->
+   <div class="png png-cataws" id="catawsElement"></div>
+
+    <!-- Contenido de tu página -->
+
+    <script src="juegopelea.js"></script> <!-- Llamada al archivo JavaScript al final del cuerpo -->
+
+    <!-- Pie de página -->
+    <footer>
+        Derechos reservados &copy; 2013-2024
+    </footer>
+
+    <!-- Canvas -->
+    <canvas id="lienzo" width="800" height="500"></canvas>
+
+    <!-- Elementos del juego -->
+    <div class="container">
+        <!-- Elemento del personaje "crow" -->
+        <div class="png png-crow" id="pngElement"></div>
+        <!-- Elemento del personaje "cataws" -->
+        <div class="auto-png png-cataws" id="autoMoveElement"></div>
+    </div>
+
+    <!-- Script para dibujar en el canvas -->
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtener el elemento canvas y su contexto 2D
+            var lienzo = document.getElementById("lienzo");
+            var dibujo = lienzo.getContext("2d");
+
+            // Dibujar fondo celeste
+            dibujo.fillStyle = "#68D2E8";
+            dibujo.fillRect(0, 0, lienzo.width, lienzo.height);
+
+            // Dibujar un rectángulo amarillo
+            dibujo.fillStyle = "#F8FF5A";
+            dibujo.fillRect(120, 120, 560, 280); // Coordenadas (x, y) y dimensiones (ancho, alto)
+
+            // Dibujar un rectángulo gris más pequeño y dentro del amarillo
+            dibujo.fillStyle = "#686D76";
+            dibujo.fillRect(195, 195, 410, 140); // Coordenadas (x, y) y dimensiones (ancho, alto)
+
+            // Dibujar un rectángulo rojo en lugar de la línea vertical
+            dibujo.fillStyle = "#FF0000";
+            dibujo.fillRect(90, 120, 30, 280); // Coordenadas (x, y) y dimensiones (ancho, alto)
+
+            // Dibujar una línea roja horizontal sobre el rectángulo amarillo
+            dibujo.strokeStyle = "#FF0000";
+            dibujo.lineWidth = 5; // Grosor de la línea
+            dibujo.beginPath();
+            dibujo.moveTo(120, 120); // Punto inicial de la línea
+            dibujo.lineTo(680, 120); // Punto final de la línea
+            dibujo.stroke();
+
+            // Dibujar el piso gris en la parte inferior
+            dibujo.fillStyle = "#686D76";
+            dibujo.fillRect(0, 400, lienzo.width, 100); // Coordenadas (x, y) y dimensiones (ancho, alto)
+
+            // Crear y aplicar un gradiente lineal en la parte inferior
+            var gr = dibujo.createLinearGradient(0, 300, 0, 400);
+            gr.addColorStop(0, "#6FDCE3");
+            gr.addColorStop(1, "#a3cbba");
+            dibujo.fillStyle = gr;
+            dibujo.fillRect(0, 300, lienzo.width, 100); // Esto cubre parte del piso gris para dar un efecto de gradiente
+
+            // Cargar la imagen "oxxo.png" para la línea horizontal
+            var imgOXXOHorizontal = new Image();
+            imgOXXOHorizontal.src = "oxxo.png"; // Ruta de la imagen
+            imgOXXOHorizontal.onload = function() {
+                dibujo.drawImage(imgOXXOHorizontal, 300 - imgOXXOHorizontal.width / 2, 80); // Centrar la imagen horizontalmente
+            };
+
+            // Cargar la imagen para la línea vertical
+            var imgOXXOVertical = new Image();
+            imgOXXOVertical.src = "oxxo2.png"; // Ruta de la imagen
+            imgOXXOVertical.onload = function() {
+                dibujo.drawImage(imgOXXOVertical, 60, 100); // Colocar la imagen en la punta de la línea vertical roja
+            };
+
+            // Dibujar los personajes en el canvas
+            var crowImg = new Image();
+            crowImg.src = "crow.png";
+            crowImg.onload = function() {
+                dibujo.drawImage(crowImg, lienzo.width / 2 - 50, lienzo.height - 150, 140, 160); // Posición y tamaño del personaje "crow"
+            };
+
+          var catawsImg = new Image();
+            catawsImg.src = "cataws.png";
+            catawsImg.onload = function() {
+                dibujo.drawImage(catawsImg, 150, lienzo.height - 150, 200, 160); // Posición y tamaño del personaje "cataws"
+
+            };
+
+        });
+    </script>
+
+</body>
+</html>
